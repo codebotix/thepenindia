@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Styling for the quiz container */
+    #quiz-container {
+      text-align: left;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+    }
+
+    .quiz-option-card {
+      background-color: yellow;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .quiz-question {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Styling for correct and incorrect answers */
+    .correct-answer {
+      background-color: green;
+    }
+
+    .incorrect-answer {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="quiz-container">
+    <div class="quiz-question">
+      BLA Insights Quiz: Test Your TN Political Knowledge!
+    </div>
+    <div class="quiz-question">
+      How many polling booth stations are there in Tamil Nadu?
+    </div>
+    <div class="quiz-option-card" onclick="selectAnswer(this, 'a')">a) 234</div>
+    <div class="quiz-option-card" onclick="selectAnswer(this, 'b')">b) 432</div>
+    <div class="quiz-option-card" onclick="selectAnswer(this, 'c')">c) 88,936</div>
+    <div class="quiz-option-card" onclick="selectAnswer(this, 'd')">d) 92,782</div>
+  </div>
+
+  <script>
+    function selectAnswer(optionCard, selectedAnswer) {
+      // Reset background color of all option cards
+      const optionCards = document.querySelectorAll('.quiz-option-card');
+      optionCards.forEach(card => card.classList.remove('correct-answer', 'incorrect-answer'));
+
+      // Add correct/incorrect answer classes based on selected answer
+      const correctAnswers = ['c'];
+      if (selectedAnswer === correctAnswers[0]) {
+        optionCard.classList.add('correct-answer');
+      } else {
+        optionCard.classList.add('incorrect-answer');
+      }
+
+      // Redirect to the timer page after a 2-second delay
+      setTimeout(() => {
+        window.location.href = "timer.html";
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
